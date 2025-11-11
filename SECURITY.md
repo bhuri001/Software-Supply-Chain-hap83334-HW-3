@@ -1,0 +1,17 @@
+# Security Policy
+
+## Supported Versions
+
+We proudly support only the latest version of this project, available on the `main` branch. We ensure that security patches are applied promptly and efficiently to this version.
+
+| Version               | Supported          |
+| --------------------- | ------------------ |
+| Latest (Release 3.0)  | :white_check_mark: |
+
+## Reporting a Vulnerability
+
+We take security vulnerabilities extremely seriously. If you identify a security issue, report it immediately by creating a GitHub issue in this repository or by emailing us for confidential matters.
+
+When reporting a vulnerability, provide a detailed description of the issue, steps to reproduce it, and any other relevant information to facilitate a swift resolution.
+
+We value your commitment to responsible disclosure and will acknowledge your contributions appropriately.

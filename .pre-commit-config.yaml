@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: trufflehog-commit-scan
+        name: TruffleHog secret scan (new commits)
+        entry: bash -c 'trufflehog git --fail --no-update --since-commit $(git rev-parse HEAD~1)'
+        language: system
+        pass_filenames: false
+

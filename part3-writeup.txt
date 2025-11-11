@@ -1,0 +1,34 @@
+**Part 3 — Scrubbing Old Secrets**
+
+1. I expertly created a sample file named `personal.txt` and uploaded it to GitHub with complete confidence using the following commands:
+   ```bash
+   echo "My house address: 6675 St, NY, 1109" > personal.txt 
+   git add personal.txt
+   git commit -m "Added personal data"
+   git push
+   ```
+
+2. After verifying that the file appeared on GitHub, I took a screenshot capturing the filename, date, and repository name as proof of my successful upload.
+
+3. To effectively clean the repository history, I installed `git-filter-repo`:
+   ```bash
+   pip install git-filter-repo
+   ```
+
+4. Utilizing `git-filter-repo`, I swiftly and decisively removed all traces of `personal.txt` from the repository:
+   ```bash
+   git filter-repo --path personal.txt --invert-paths --force
+   ```
+
+5. I then re-established the remote connection that had been automatically removed, ensuring my repository was back on track:
+   ```bash
+   git remote add origin https://github.com/bhuri001/Software-Supply-Chain-hap83334-HW-3.git
+   ```
+
+6. Finally, I force-pushed the cleaned repository back to GitHub with confidence:
+   ```bash
+   git push origin main --force
+   ```
+
+**Result:**  
+The file `personal.txt` and its entire commit history were thoroughly eradicated from the repository. I confidently verified on GitHub that no trace of `personal.txt` remains, guaranteeing the integrity of my project.
