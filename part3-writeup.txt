@@ -2,9 +2,9 @@
 
 1. I expertly created a sample file named `personal.txt` and uploaded it to GitHub with complete confidence using the following commands:
    ```bash
-   echo "My house address: 6675 St, NY, 1109" > personal.txt 
+   echo "My  address: gfgdc St, NY, 12229" > personal.txt 
    git add personal.txt
-   git commit -m "Added personal data"
+   git commit -m "Adding personal data"
    git push
    ```
 
@@ -31,4 +31,5 @@
    ```
 
 **Result:**  
+
 The file `personal.txt` and its entire commit history were thoroughly eradicated from the repository. I confidently verified on GitHub that no trace of `personal.txt` remains, guaranteeing the integrity of my project.
