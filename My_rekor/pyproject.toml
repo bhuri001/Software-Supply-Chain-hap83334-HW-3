@@ -1,4 +1,4 @@
-[project]
+[tool.poetry]
 name = "hap83334-rekor"
 version = "4.0.0"
 description = "Simple rekor tool for assignment 4"
