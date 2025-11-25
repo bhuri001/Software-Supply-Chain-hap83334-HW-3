@@ -70,6 +70,3 @@ exclude = ["tests"]
 
 [tool.autodocstring]
 style = "google"
-
-[tool.poetry]
-package-mode = false
