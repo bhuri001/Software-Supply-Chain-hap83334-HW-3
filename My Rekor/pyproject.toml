@@ -1,9 +1,9 @@
 [project]
-name = "ac1137"
+name = "hap8334"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "arunchannaraju1",email = "arunchannaraju@gmail.com"}
+    {name = "Hemraj",email = "hp@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
