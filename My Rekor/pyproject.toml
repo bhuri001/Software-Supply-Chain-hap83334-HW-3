@@ -1,7 +1,7 @@
 [project]
-name = "hap8334"
-version = "0.1.0"
-description = ""
+name = "hap83334-rekor"
+version = "4.0.0"
+description = "Simple rekor tool for assignment 4"
 authors = [
     {name = "Hemraj",email = "hp@gmail.com"}
 ]
