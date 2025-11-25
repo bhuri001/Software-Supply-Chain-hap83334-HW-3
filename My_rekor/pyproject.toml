@@ -1,5 +1,5 @@
 [project]
-name = "hap83334-rekor"
+name = "hap83334"
 version = "4.0.0"
 description = "Simple rekor tool for assignment 4"
 authors = [
