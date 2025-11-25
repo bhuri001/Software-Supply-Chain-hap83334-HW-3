@@ -53,8 +53,3 @@ exclude = ["tests"]
 [tool.autodocstring]
 style = "google"
 
-[tool.poetry]
-packages = [
-    { include = "my_rekor", from = "src" }
-]
-
