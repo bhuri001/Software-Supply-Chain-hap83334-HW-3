@@ -38,9 +38,10 @@ jobs:
       - name: Install SBOM tool
         run: pip install cyclonedx-bom
 
+      # ✅ Generate SBOM from the installed environment, NOT from poetry metadata
       - name: Generate SBOM (CycloneDX)
         working-directory: My_rekor
-        run: cyclonedx-py poetry -o sbom.json
+        run: cyclonedx-py environment -o sbom.json
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
