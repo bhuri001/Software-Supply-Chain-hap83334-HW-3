@@ -6,9 +6,9 @@ on:
       - "v*"
 
 permissions:
-  contents: write        
-  id-token: write        
-  attestations: write    
+  contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   release:
@@ -26,33 +26,38 @@ jobs:
       - name: Install Poetry
         run: pip install poetry
 
-      - name: Install dependencies
+      - name: Install project dependencies
         working-directory: My_rekor
         run: |
           poetry install --no-interaction --no-root
 
-      - name: Build package
+      - name: Build Python package
         working-directory: My_rekor
-        run: |
-          poetry build
+        run: poetry build
+
+      - name: Install SBOM tool
+        run: pip install cyclonedx-bom
+
+      - name: Generate SBOM (CycloneDX)
+        working-directory: My_rekor
+        run: cyclonedx-py -o sbom.json
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
+          name: release-files
           path: |
             My_rekor/dist/*
             My_rekor/sbom.json
 
-      - name: Create Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            My_rekor/dist/*
+          files: My_rekor/dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate SBOM Attestation
+      - name: Attest SBOM
         uses: actions/attest-sbom@v3
         with:
           subject-path: "My_rekor/dist/*"

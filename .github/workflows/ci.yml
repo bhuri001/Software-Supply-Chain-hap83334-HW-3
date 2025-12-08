@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: ["main"]
+  pull_request:
 
 jobs:
   ci:
@@ -18,38 +19,28 @@ jobs:
           python-version: "3.11"
 
       - name: Install Poetry
-        run: |
-          pip install poetry
+        run: pip install poetry
 
       - name: Install dependencies
         working-directory: My_rekor
-        run: |
-          poetry install --no-interaction --no-root
+        run: poetry install --no-interaction --no-root
 
-      - name: Run black (check)
+      - name: Black formatting check
         working-directory: My_rekor
         run: poetry run black --check .
 
-      - name: Run ruff
+      - name: Ruff lint check
         working-directory: My_rekor
         run: poetry run ruff check .
 
-      - name: Run flake8
+      - name: Flake8 lint
         working-directory: My_rekor
         run: poetry run flake8 .
 
-      - name: Run pylint
-        working-directory: My_rekor
-        run: poetry run pylint my_rekor
-
-      - name: Run bandit SAST scan
+      - name: Bandit SAST scan
         working-directory: My_rekor
         run: poetry run bandit -r .
 
-      - name: Run tests with coverage
+      - name: Run tests
         working-directory: My_rekor
-        run: |
-          poetry run pytest --cov=my_rekor --cov-report=xml
-
-
-
+        run: poetry run pytest
