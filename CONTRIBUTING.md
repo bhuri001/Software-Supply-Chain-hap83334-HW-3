@@ -26,7 +26,7 @@ If you discover a bug or have suggestions for improvement, please open an issue 
 This project adheres to standard Python style guidelines (PEP 8). We use tools like `pylint` and `ruff` to maintain high code quality. Before submitting a pull request, ensure that your code passes these tools locally to meet the project's style standards.
 
 ## Code of Conduct
-
+The information on how to contribute SHOULD include the requirements for acceptable contributions (e.g., a reference to any required coding standard). (URL required)
 This project operates under a Contributor Code of Conduct, and your participation signifies your commitment to its principles. (Feel free to add a `CODE_OF_CONDUCT.md` file if you choose.)
 
 Thank you for being a part of this project and sharing your talents!
