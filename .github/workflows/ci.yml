@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: |
+          pip install poetry
+
+      - name: Install dependencies
+        working-directory: My_rekor
+        run: |
+          poetry install --no-interaction --no-root
+
+      - name: Run black (check)
+        working-directory: My_rekor
+        run: poetry run black --check .
+
+      - name: Run ruff
+        working-directory: My_rekor
+        run: poetry run ruff check .
+
+      - name: Run flake8
+        working-directory: My_rekor
+        run: poetry run flake8 .
+
+      - name: Run pylint
+        working-directory: My_rekor
+        run: poetry run pylint my_rekor
+
+      - name: Run bandit SAST scan
+        working-directory: My_rekor
+        run: poetry run bandit -r .
+
+      - name: TruffleHog filesystem scan
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: .
+          extra_args: "filesystem --only-verified"
+
+      - name: Run tests with coverage
+        working-directory: My_rekor
+        run: |
+          poetry run pytest --cov=my_rekor --cov-report=xml
+
+
+
