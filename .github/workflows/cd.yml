@@ -3,7 +3,7 @@ name: CD
 on:
   push:
     tags:
-      - "v*"
+      - "v 1.0.0"
 
 permissions:
   contents: write
