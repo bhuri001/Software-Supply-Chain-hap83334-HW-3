@@ -5,14 +5,18 @@ on:
     - cron: '0 0 * * 1'  # run weekly
   workflow_dispatch:      # allow manual runs
 
-permissions:
-  contents: read
-  security-events: write
-  id-token: write
+# ✅ Global permissions must be read-only for Scorecard verification
+permissions: read-all
 
 jobs:
   analysis:
     runs-on: ubuntu-latest
+
+    # ✅ Job-level permissions: only what Scorecard needs
+    permissions:
+      security-events: write   # needed to upload SARIF
+      id-token: write          # needed for verification
+      contents: read
 
     steps:
       - name: Checkout
