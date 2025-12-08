@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -28,8 +29,7 @@ jobs:
 
       - name: Install project dependencies
         working-directory: My_rekor
-        run: |
-          poetry install --no-interaction --no-root
+        run: poetry install --no-interaction --no-root
 
       - name: Build Python package
         working-directory: My_rekor
@@ -40,7 +40,7 @@ jobs:
 
       - name: Generate SBOM (CycloneDX)
         working-directory: My_rekor
-        run: cyclonedx-py -o sbom.json
+        run: cyclonedx-py poetry -o sbom.json
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
