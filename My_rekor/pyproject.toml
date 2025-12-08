@@ -1,7 +1,7 @@
 [project]
 name = "hap83334"
-version = "4.0.0"
-description = "Simple rekor tool for assignment 4"
+version = "5.0.0"
+description = "Implementing CI/CD"
 authors = [
     { name = "Hemraj", email = "hp@gmail.com" }
 ]
@@ -28,7 +28,7 @@ dev = [
     "bandit (>=1.8.6,<2.0.0)",
     "autodocstring (>=0.1.2,<0.2.0)",
     "pytest (>=9.0.0,<10.0.0)",
-    "pytest-cov (>=7.0.0,<8.0.0)"
+    "pytest-cov (>=7.0.0,<8.0.0)",
 ]
 
 [tool.black]
