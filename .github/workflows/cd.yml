@@ -1,0 +1,59 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write        
+  id-token: write        
+  attestations: write    
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        working-directory: My_rekor
+        run: |
+          poetry install --no-interaction --no-root
+
+      - name: Build package
+        working-directory: My_rekor
+        run: |
+          poetry build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            My_rekor/dist/*
+            My_rekor/sbom.json
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            My_rekor/dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate SBOM Attestation
+        uses: actions/attest-sbom@v3
+        with:
+          subject-path: "My_rekor/dist/*"
+          sbom-path: "My_rekor/sbom.json"
